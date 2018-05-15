@@ -100,6 +100,7 @@ func expandableChecking(counter string, counterSearchKeyWord string) (expsub str
 		needexp = true
 		re = regexp.MustCompile("^\\.")
 		expsubArr := strings.Split(re.ReplaceAllString(expCheck, ""), ".")
+		
 		switch len(expsubArr) {
 		case 0:
 			expsub = ""
@@ -108,6 +109,11 @@ func expandableChecking(counter string, counterSearchKeyWord string) (expsub str
 			needexp = false
 		default:
 			expsub = expsubArr[0]
+			//if counter like switch.if.In/ifIndex=177,ifName=Eth-Trunk3.1000
+			//not Split, return it
+			if strings.Contains(expsubArr[0], "ifName") {
+				expsub = expCheck
+			}
 			needexp = true
 		}
 	}
