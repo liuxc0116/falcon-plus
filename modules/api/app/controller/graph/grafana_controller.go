@@ -109,12 +109,13 @@ func expandableChecking(counter string, counterSearchKeyWord string) (expsub str
 			needexp = false
 		default:
 			expsub = expsubArr[0]
+			needexp = true
 			//if counter like switch.if.In/ifIndex=177,ifName=Eth-Trunk3.1000
 			//not Split, return it
-			if strings.Contains(expsubArr[0], "ifName") {
+			if strings.Contains(expsub, "ifName") {
 				expsub = expCheck
+				needexp = false
 			}
-			needexp = true
 		}
 	}
 	return
