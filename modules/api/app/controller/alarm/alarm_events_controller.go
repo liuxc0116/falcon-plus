@@ -89,7 +89,7 @@ func (s APIGetAlarmListsInputs) collectFilters() string {
 		tmp = append(tmp, pstatus)
 	}
 	if s.Metrics != "" {
-		tmp = append(tmp, fmt.Sprintf("metrics regexp '%s'", s.Metrics))
+		tmp = append(tmp, fmt.Sprintf("metric regexp '%s'", s.Metrics))
 	}
 	if s.EventId != "" {
 		tmp = append(tmp, fmt.Sprintf("id = '%s'", s.EventId))
